@@ -4,29 +4,28 @@ import java.util.InputMismatchException;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int nbOne;
-        int nbTwo;
-        int nbThree;
-        try {
-            System.out.print("Entrer le premier nombre : ");
-            nbOne = scanner.nextInt();
-            System.out.print("Entrer le deuxieme nombre : ");
-            nbTwo = scanner.nextInt();
-            scanner.close();
-            nbThree = nbOne * nbTwo;
-            String resultToFormat = "Résultat : %d * %d = %d";
-            String result = String.format(resultToFormat, nbOne, nbTwo, nbThree);
+        Integer number = null;
 
-            System.out.println(result);
-        } catch (InputMismatchException e) {
-            System.out.println("Attention ! Tu es sencé mettre un nombre entier");
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+        while (number == null) {
+            try {
+                System.out.print("Entrez un nombre : ");
+                number = scanner.nextInt(); // Exception potentiellement levée, donc la variable number reste à null
+                scanner.close();
+            } catch (InputMismatchException e) {
+                System.out.println("Attention ! Vous devez entrez un nombre");
+                scanner.nextLine();
+            } catch (Exception e) {
+                System.out.println("Mince une erreur s'est produite :(");
+                return;
+            }
         }
+
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(String.format("%d x %d = %d", number, i, number * i));
+        }
+
+
     }
-
-
-
-
 }
+
 
