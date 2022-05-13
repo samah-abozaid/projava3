@@ -4,15 +4,17 @@ public class Main {
 
     public static void main(String[] args) {
 
+        Calculator myCalculator = new Calculator();
 
-Calculator calc=new Calculator();
-     int result =calc.add(12,18);
-     System.out.println(result);
-
-
-
+        try {
+            myCalculator.start();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
+
+
 
 
 
